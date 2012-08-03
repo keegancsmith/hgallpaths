@@ -8,7 +8,7 @@ setup(
     author='Keegan Carruthers-Smith',
     author_email='keegan.csmith@gmail.com',
     url='https://bitbucket.org/keegan_csmith/hgallpaths',
-    license='LICENSE.txt',
+    license='BSD',
     py_modules=['hgallpaths'],
     description=('A mercurial extension to allow pushing and pulling from '
                  'all paths.'),
