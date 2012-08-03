@@ -1,11 +1,10 @@
-# hgallpaths.py - pull and push too all paths
+# hgallpaths.py - pull and push to all paths
 #
 # Copyright 2012 Keegan Carruthers-Smith <keegan.csmith@gmail.com>
 #
-# This software may be used and distributed according to the terms of the
-# GNU General Public License version 2 or any later version.
+# Released under the terms of the BSD License. See LICENSE.txt for details.
 
-'''push and pull too all paths'''
+'''push and pull to all paths'''
 
 from mercurial import commands
 
@@ -25,10 +24,8 @@ def do_command(command, path_kw, ui, *args, **opts):
 
 
 def create_command(command, path_kw):
-
     def cmd(*args, **opts):
         return do_command(command, path_kw, *args, **opts)
-
     cmd.__doc__ = 'See help for %s' % command
 
     global cmdtable
