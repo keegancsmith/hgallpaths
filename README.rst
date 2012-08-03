@@ -30,7 +30,7 @@ With either of those methods you don't need to specify the path to hgallpaths
 in your hgrc configuration::
 
   [extensions]
-  hgallpaths = /path/to/hgallpaths.py
+  hgallpaths =
 
 
 Configuration
