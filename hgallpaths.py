@@ -6,16 +6,24 @@
 
 '''push and pull to all paths'''
 
-from mercurial import commands
+from mercurial.i18n import _
+from mercurial import commands, util
 
 cmdtable = {}
 
 
 def do_command(command, path_kw, ui, *args, **opts):
     cmd = getattr(commands, command)
-    paths = ui.configitems('paths')
     exclude = set(ui.configlist('hgallpaths', 'exclude', []) +
                   ui.configlist('hgallpaths', 'exclude_%s' % command, []))
+    paths = ui.configitems('paths')
+    paths = [(name, path) for name, path in paths if name not in exclude]
+    path_names = ', '.join(name for name, path in paths)
+
+    if paths:
+        ui.status(_('%s to %s\n') % (command, path_names))
+    else:
+        raise util.Abort(_('No paths to %s') % command)
 
     for name, path in paths:
         if name not in exclude:
